@@ -1,0 +1,126 @@
+/* 게임용 폰트 import - 반드시 맨 위에 있어야 함 */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tailwind CSS v4 테마 정의 */
+@theme {
+  /* 게임 커스텀 색상 */
+  --color-game-dark: #1a1a1a;
+  --color-game-darker: #0f0f0f;
+  --color-game-accent: #8b5cf6;
+  --color-game-accent-hover: #7c3aed;
+  --color-game-text: #f5f5f5;
+  --color-game-text-secondary: #a1a1aa;
+  --color-game-border: #374151;
+  --color-game-success: #10b981;
+  --color-game-warning: #f59e0b;
+  --color-game-error: #ef4444;
+  --color-game-horror: #dc2626;
+  --color-game-horror-light: #fca5a5;
+  
+  /* 게임 폰트 */
+  --font-game-title: Orbitron, monospace;
+  --font-game-ui: Inter, sans-serif;
+  --font-game-dialogue: 'Noto Sans KR', sans-serif;
+}
+
+/* 기본 레이아웃 */
+@layer base {
+  html {
+    font-family: var(--font-game-ui);
+  }
+  
+  body {
+    background-color: var(--color-game-dark);
+    color: var(--color-game-text);
+    min-height: 100vh;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+/* 게임 컴포넌트 스타일 */
+@layer components {
+  .game-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-game-darker);
+  }
+
+  .dialogue-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .choice-button {
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    background-color: rgba(139, 92, 246, 0.1);
+  }
+  
+  .choice-button:hover {
+    background-color: rgba(139, 92, 246, 0.2);
+  }
+
+  .game-button {
+    background-color: var(--color-game-accent);
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+  }
+  
+  .game-button:hover {
+    background-color: var(--color-game-accent-hover);
+  }
+  
+  .game-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: var(--color-game-accent);
+    font-family: var(--font-game-title);
+  }
+}
+
+/* 게임 애니메이션 */
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
